@@ -3,7 +3,8 @@
 name: CI
 
 env:
-  NAME    : "${{ github.sha }}"
+  APPL_NAME : "MyFlask"
+  NAME      : "${{ github.sha }}"
   
 # Controls when the workflow will run
 on:
@@ -26,6 +27,15 @@ jobs:
       # Runs a single command using the runners shell
       - name: Print Hello World
         run : echo "Hello, world!"
+      
+      - name: list dir
+        run: ls
+      
+      - name: git clone
+        uses: : actions/checkout@v1
+        
+        - name: list clone dir 
+        run: ls
         
       - name: Do some commands
         run : | 
