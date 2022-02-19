@@ -23,14 +23,16 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Print Hello World
-        run: echo "Hello, world!"
+        run : echo "Hello, world!"
+
 
   second:
-    steps:
+    runs-on: ubuntu-latest
     
-      runs-on: ubuntu-latest
-      steps:
-        - name: Print Second HW
-          run: echo "Hello, next world!"
+     
+      
+    steps:
+      - name: Print Second HW
+        run : echo "Hello, next world!"
           
       
