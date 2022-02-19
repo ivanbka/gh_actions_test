@@ -29,13 +29,13 @@ jobs:
         run : echo "Hello, world!"
       
       - name: list dir
-        run: ls
+        run : ls
       
-      - name: git clone
-        uses: actions/checkout@v1
+      - name : git clone
+        uses : actions/checkout@v1
         
-        - name: list clone dir 
-        run: ls
+      - name: list clone dir 
+        run : ls
         
       - name: Do some commands
         run : | 
