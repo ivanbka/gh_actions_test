@@ -3,7 +3,7 @@
 name: CI
 
 env:
-  NAME    : "${{ github_sha }}"
+  NAME    : "${{ github.sha }}"
   
 # Controls when the workflow will run
 on:
