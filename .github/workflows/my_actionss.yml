@@ -27,7 +27,7 @@ jobs:
 
   second:
     runs-on: ubuntu-latest
-    
+    needs: [first]
        
     steps:
       - name: Print Second HW
