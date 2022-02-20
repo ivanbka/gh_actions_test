@@ -3,8 +3,8 @@
 name: CI-AWS-Pipeline
 env:
   EB_PACKAGE_S3_BUCKET_NAME : "gh.actions1"
-  EB_APPLICATION_NAME       : "Ghactions-env"
-  EB_ENVIRONMENT_NAME       : "MyFlask-env"
+  EB_APPLICATION_NAME       : "Ghactions"
+  EB_ENVIRONMENT_NAME       : "Ghactions-env"
   DEPLOY_PACKAGE_NAME       : "flask_app_${{ github.sha }}.zip"
   AWS_REGiON_NAME           : "eu-north-1"
 
