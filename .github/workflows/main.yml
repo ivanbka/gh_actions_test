@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Git clone repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
 
       - name: Create ZIP depl pack
         run : zip -r ${{env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
