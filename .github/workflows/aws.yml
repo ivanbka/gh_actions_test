@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI-AWS-Pipeline
+env:
+  EB_PACKAGE_S3_BUCKET_NAME : "ivanbka-flask-application-packages"
+  EB_APPLICATION_NAME       : "MyFlask"
+  EB_ENVIRONMENT_NAME       : "MyFlask-env"
+  DEPLOY_PACKAGE_NAME       : "flask_app_${{ github.sha }}.zip"
+  AWS_REGiON_NAME           : "eu-north-1"
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+jobs:
+  # This workflow contains a single job called "build"
+  my_ci_part:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Git clone repo
+        uses: actions/checkout@v2
+
+      - name: Create ZIP depl pack
+        run : zip -r ${{env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+        
+      - name: Cinfigurate my AWS Credenrials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id     : ${{ secrets.MY_AWS_AK }}
+          aws-secret-access-key : ${{ secrets.MY_AWS_SK }}
+          aws-region            : ${{ eu-north-1 }}
+
+      - name: Copy Deployment package to S# bucket
+        run: aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ env.EB_PACKAGE_S3_BUCKET_NAME }}/
+        
